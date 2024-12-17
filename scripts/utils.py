@@ -42,5 +42,12 @@ def load_stock_data(file_path):
     return data
 
 def index_by_date(data):
-    data['Date'] = pd.to_datetime(data['Date'], 'coerce')
-    data.set_index('Date', inplace=True)
+    data['date'] = pd.to_datetime(data['date'], 'coerce')
+    data.set_index('date', inplace=True)
+
+def filter_data_by_stock(data, ticker):
+    filtered_data = data[data['stock'] == ticker]
+    return filtered_data
+
+def reset_index(data):
+    data = data.reset_index(drop=True)

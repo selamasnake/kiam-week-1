@@ -1,5 +1,5 @@
-from scripts.utils import load_data, load_data_drive, explore_data, drop_unnamed_column, convert_date_dtype, extract_ticker, load_stock_data, index_by_date
+from scripts.utils import load_data, load_data_drive, explore_data, drop_unnamed_column, convert_date_dtype, extract_ticker, load_stock_data, index_by_date, filter_data_by_stock, reset_index
 from scripts.eda import descriptive_statistics, article_per_publisher, analyze_publication_trends, analyze_publishing_time
 from scripts.text_analyzer import analyze_headline_sentiment, preprocess_text_spacy, apply_lda
-from scripts.plot import plot_publications_by_period, plot_publications_by_hour
-from scripts.stock_indicators import calculate_technical_indicators, calculate_financial_metrics
+from scripts.plot import plot_publications_by_period, plot_publications_by_hour, plot_correlation
+from scripts.stock_indicators import calculate_technical_indicators, calculate_financial_metrics, calculate_daily_returns
