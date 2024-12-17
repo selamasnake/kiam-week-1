@@ -1,2 +1,4 @@
 from scripts.utils import load_data, load_data_drive, explore_data, drop_unnamed_column, convert_date_dtype
-from scripts.eda import descriptive_statistics, article_per_publisher, analyze_publication_trends, analyze_headline_sentiment
+from scripts.eda import descriptive_statistics, article_per_publisher, analyze_publication_trends, analyze_publishing_time
+from scripts.text_analyzer import analyze_headline_sentiment, preprocess_text_spacy, apply_lda
+from scripts.plot import plot_publications_by_period, plot_publications_by_hour
