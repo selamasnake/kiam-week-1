@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scripts.eda import analyze_publication_trends
-from scripts.stock_indicators import calculate_technical_indicators
+from eda import analyze_publication_trends
+from stock_indicators import calculate_technical_indicators
 import plotly.express as px
 
 
@@ -40,7 +40,7 @@ def plot_publications_by_hour(data):
     publication_by_hour = data.groupby('publication_hour').size()
 
     plt.figure(figsize=(12, 12))
-    sns.barplot(x=publication_by_hour.index, y= publication_by_hour.values, palette='Blues_d')
+    sns.lineplot(x=publication_by_hour.index, y= publication_by_hour.values, palette='Blues_d')
 
     plt.title('Publications by Hour of Day (Local Time)')
     plt.xlabel('Hour of Day')
@@ -50,7 +50,7 @@ def plot_publications_by_hour(data):
 
 #Stock Data
 
-def plot_stock_data( data):
+def plot_stock_mva( data):
     fig = px.line(data, x=data.index, y=['Close', 'SMA'], title='Stock Price with Moving Average')
     fig.show()
 
@@ -63,7 +63,7 @@ def plot_ema(data):
     fig.show()
 
 def plot_macd(data):
-    fig = px.line(data, x=data.index, y=['MACD', 'MACD_Signal'], title='Moving Average Convergence Divergence (MACD)')
+    fig = px.line(data, x=data.index, y=['MACD'], title='Moving Average Convergence Divergence (MACD)')
     fig.show()
 
 def plot_daily_returns(data):
