@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scripts.eda import analyze_publication_trends
+from scripts.stock_indicators import calculate_technical_indicators
+import plotly.express as px
+
 
 def plot_publications_by_period(data):
 
@@ -45,3 +48,25 @@ def plot_publications_by_hour(data):
     plt.xticks(rotation=0)
     plt.show()
 
+#Stock Data
+
+def plot_stock_data( data):
+    fig = px.line(data, x=data.index, y=['Close', 'SMA'], title='Stock Price with Moving Average')
+    fig.show()
+
+def plot_rsi(data):
+    fig = px.line(data, x=data.index, y='RSI', title='Relative Strength Index (RSI)')
+    fig.show()
+
+def plot_ema(data):
+    fig = px.line(data, x=data.index, y=['Close', 'EMA'], title='Stock Price with Exponential Moving Average')
+    fig.show()
+
+def plot_macd(data):
+    fig = px.line(data, x=data.index, y=['MACD', 'MACD_Signal'], title='Moving Average Convergence Divergence (MACD)')
+    fig.show()
+
+def plot_daily_returns(data):
+    Ticker = ''
+    fig = px.line(data, x=data.index, y="Daily Returns", title=f"Daily Returns for {Ticker}")
+    fig.show()
