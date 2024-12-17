@@ -42,19 +42,17 @@ def apply_lda(data):
     # Create the corpus (bag-of-words representation)
     corpus = [dictionary.doc2bow(text) for text in processed_headline]
 
-    num_topics = 15
+    num_topics = 10
 
     # Train the LDA model using the corpus and dictionary
     lda_model = LdaModel(corpus, num_topics=num_topics, id2word=dictionary, passes=15)
 
-    # Display the topics
     topics = lda_model.print_topics(num_words=5)
     for topic in topics:
         print(topic)
-
-
-def visualize_dominant_topics(data):
-    lda_model, corpus, dictionary = apply_lda(data)
+    
+    pyLDAvis.enable_notebook(local=True)
     vis = pyLDAvis.gensim_models.prepare(lda_model, corpus, dictionary)
+
     pyLDAvis.display(vis)
-    pyLDAvis.gensim_models.prepare(vis).save('lda_visualization.html')
+
